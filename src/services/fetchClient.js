@@ -1,5 +1,5 @@
 export default {
-  async login (url, payload) {
+  async postUnauthenticated (url, payload) {
     const rawResponse = await fetch(url, {
       method: 'POST',
       headers: {
@@ -14,7 +14,7 @@ export default {
     const rawResponse = await fetch(url, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer: ${window.localStorage.token}`,
+        Authorization: `Bearer ${window.localStorage.token}`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
@@ -26,7 +26,7 @@ export default {
     const rawResponse = await fetch(url, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer: ${window.localStorage.token}`,
+        Authorization: `Bearer ${window.localStorage.token}`,
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
