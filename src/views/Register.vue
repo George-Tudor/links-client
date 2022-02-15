@@ -18,7 +18,7 @@ export default {
   }),
   methods: {
     async register () {
-      await fetchClient.postUnauthenticated('http://localhost:8080/register', this.credentials)
+      await fetchClient.postUnauthenticated('/register', this.credentials)
       this.$router.push({ name: 'Login' })
     }
 

@@ -1,6 +1,8 @@
+const host = 'http://localhost:8080'
+
 export default {
   async postUnauthenticated (url, payload) {
-    const rawResponse = await fetch(url, {
+    const rawResponse = await fetch(host + url, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -8,10 +10,14 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    return await rawResponse.json()
+    try {
+      return await rawResponse.json()
+    } catch (err) {
+      return rawResponse
+    }
   },
   async post (url, payload) {
-    const rawResponse = await fetch(url, {
+    const rawResponse = await fetch(host + url, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${window.localStorage.token}`,
@@ -20,10 +26,14 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    return await rawResponse.json()
+    try {
+      return await rawResponse.json()
+    } catch (err) {
+      return rawResponse
+    }
   },
   async get (url, query) {
-    const rawResponse = await fetch(url, {
+    const rawResponse = await fetch(host + url, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${window.localStorage.token}`,
@@ -32,6 +42,25 @@ export default {
       },
       query
     })
-    return await rawResponse.json()
+    try {
+      return await rawResponse.json()
+    } catch (err) {
+      return rawResponse
+    }
+  },
+  async delete (url) {
+    const rawResponse = await fetch(host + url, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${window.localStorage.token}`,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    try {
+      return await rawResponse.json()
+    } catch (err) {
+      return rawResponse
+    }
   }
 }

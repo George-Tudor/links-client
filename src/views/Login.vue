@@ -19,7 +19,7 @@ export default {
   }),
   methods: {
     async login () {
-      const response = await fetchClient.postUnauthenticated('http://localhost:8080/authenticate', this.credentials)
+      const response = await fetchClient.postUnauthenticated('/authenticate', this.credentials)
       window.localStorage.token = response.token
       this.$router.push({ name: 'Links' })
     }
