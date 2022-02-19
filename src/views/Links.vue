@@ -2,12 +2,17 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <br>
+    <label for="link-title">Title: </label>
+    <input type="text" id="link-title" name="link-title" v-model="newLink.title">
+    <br>
     <label for="link-url">URL: </label>
     <input type="text" id="link-url" name="link-title" v-model="newLink.url">
     <button type="button" @click="addLink">Add Link</button>
     <button type="button" @click="getLinkInfo">Get Link Info</button>
     <fieldset v-for="link in links" :key="link.id">
       <div v-text="link.title"></div>
+      <img v-bind:src="link.imageUrl" alt="">
+      <div v-text="link.description"></div>
       <div>
         <a :href="link.url" target="_blank">Click to Open</a>
       </div>
@@ -23,7 +28,10 @@ export default {
   name: 'Links',
   data: () => ({
     newLink: {
-      url: ''
+      title: '',
+      url: '',
+      imageUrl: '',
+      description: ''
     },
     links: []
   }),
