@@ -9,15 +9,17 @@
     <input type="text" id="link-url" name="link-title" v-model="newLink.url">
     <button type="button" @click="addLink">Add Link</button>
     <button type="button" @click="getLinkInfo">Get Link Info</button>
-    <fieldset v-for="link in links" :key="link.id">
-      <div v-text="link.title"></div>
-      <img v-bind:src="link.imageUrl" alt="">
-      <div v-text="link.description"></div>
-      <div>
-        <a :href="link.url" target="_blank">Click to Open</a>
+    <div class="card" v-for="link in links" :key="link.id">
+      <div class="card-body">
+        <h3 v-text="link.title"></h3>
+        <img v-bind:src="link.imageUrl" alt="">
+        <div v-text="link.description"></div>
+        <div>
+          <a :href="link.url" target="_blank">Click to Open</a>
+        </div>
+        <button type="button" class="btn-outline-danger" @click="deleteLink(link)">Delete</button>
       </div>
-      <button type="button" @click="deleteLink(link)">Delete</button>
-    </fieldset>
+    </div>
   </div>
 </template>
 
@@ -54,6 +56,11 @@ export default {
       await fetchClient.get('/link-data', this.newLink.url)
     }
   }
-
 }
 </script>
+
+<style>
+img {
+  max-width: 200px;
+}
+</style>
