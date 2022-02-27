@@ -1,14 +1,18 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <br>
-    <label for="link-title">Title: </label>
-    <input type="text" id="link-title" name="link-title" v-model="newLink.title">
-    <br>
-    <label for="link-url">URL: </label>
-    <input type="text" id="link-url" name="link-title" v-model="newLink.url">
-    <button type="button" @click="addLink">Add Link</button>
-    <button type="button" @click="getLinkInfo">Get Link Info</button>
+    <h3>Add New Links Here</h3>
+    <div>
+      <div class="mb-2">
+        <label for="link-title" class="p-1">Title:</label>
+        <input type="text" id="link-title" name="link-title" v-model="newLink.title">
+      </div>
+      <div class="mb-2">
+        <label for="link-url" class="p-1">URL:</label>
+        <input type="text" id="link-url" name="link-title" v-model="newLink.url">
+      </div>
+    </div>
+    <button type="button" @click="addLink" class="mb-1">Add Link</button>
     <div class="card" v-for="link in links" :key="link.id">
       <div class="card-body">
         <h3 v-text="link.title"></h3>

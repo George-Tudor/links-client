@@ -1,14 +1,28 @@
 <template>
   <div class="about">
-    <input type="text" v-model="credentials.username"/>
-    <input type="password" v-model="credentials.password"/>
-    <button @click="login">Login</button>
-    <router-link :to="{ name: 'Register' }">Register</router-link>
+    <h3>Sign In</h3>
+    <div>
+      <div class="mb-2">
+        <label for="username" class="p-1">Username:</label>
+        <input type="text" name="username" id="username" v-model="credentials.username"/>
+      </div>
+      <div class="mb-2">
+        <label for="password" class="p-1">Password:</label>
+        <input type="password" name="password" id="password" v-model="credentials.password"/>
+      </div>
+    </div>
+    <div>
+      <button @click="login">Submit</button>
+      <div>
+        <router-link :to="{ name: 'Register' }">Register</router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import fetchClient from '../services/fetchClient'
+
 export default {
   name: 'Login',
   data: () => ({
