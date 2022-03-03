@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="nav-bar"></div>
     <div id="nav">
       <h1>Link Saver</h1>
     </div>
@@ -8,8 +9,13 @@
 </template>
 
 <script>
+import fetchClient from './services/fetchClient'
+
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    fetchClient.get('/me')
+  }
 }
 </script>
 
