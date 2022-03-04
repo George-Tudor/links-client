@@ -15,6 +15,8 @@ export default {
   name: 'App',
   created () {
     fetchClient.get('/me')
+      .then(() => this.$router.push({ name: 'links' }))
+      .catch(() => this.$router.push({ name: 'login' }))
   }
 }
 </script>

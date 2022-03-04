@@ -42,11 +42,7 @@ export default {
       },
       query
     })
-    try {
-      return await rawResponse.json()
-    } catch (err) {
-      return rawResponse
-    }
+    return await rawResponse.json()
   },
   async delete (url) {
     const rawResponse = await fetch(host + url, {
