@@ -14,9 +14,13 @@ import fetchClient from './services/fetchClient'
 export default {
   name: 'App',
   created () {
-    fetchClient.get('/me')
-      .then(() => this.$router.push({ name: 'links' }))
-      .catch(() => this.$router.push({ name: 'login' }))
+    if (window.localStorage.token) {
+      fetchClient.get('/me')
+        .then(() => this.$router.push({ name: 'links' }))
+        .catch(() => this.$router.push({ name: 'login' }))
+    } else {
+      this.$router.push({ name: 'login' })
+    }
   }
 }
 </script>

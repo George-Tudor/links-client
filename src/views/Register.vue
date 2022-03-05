@@ -9,7 +9,7 @@
 <script>
 import fetchClient from '../services/fetchClient'
 export default {
-  name: 'Register',
+  name: 'register',
   data: () => ({
     credentials: {
       username: '',
@@ -19,7 +19,7 @@ export default {
   methods: {
     async register () {
       await fetchClient.postUnauthenticated('/register', this.credentials)
-      this.$router.push({ name: 'Login' })
+      this.$router.push({ name: 'login' })
     }
 
   }

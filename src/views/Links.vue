@@ -31,7 +31,7 @@
 // @ is an alias to /src
 import fetchClient from '../services/fetchClient'
 export default {
-  name: 'Links',
+  name: 'links',
   data: () => ({
     newLink: {
       title: '',

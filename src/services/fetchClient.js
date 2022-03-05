@@ -10,11 +10,7 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    try {
-      return await rawResponse.json()
-    } catch (err) {
-      return rawResponse
-    }
+    return await rawResponse.json()
   },
   async post (url, payload) {
     const rawResponse = await fetch(host + url, {
@@ -26,11 +22,7 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    try {
-      return await rawResponse.json()
-    } catch (err) {
-      return rawResponse
-    }
+    return await rawResponse.json()
   },
   async get (url, query) {
     const rawResponse = await fetch(host + url, {
@@ -53,10 +45,6 @@ export default {
         'Content-Type': 'application/json'
       }
     })
-    try {
-      return await rawResponse.json()
-    } catch (err) {
-      return rawResponse
-    }
+    return await rawResponse.json()
   }
 }

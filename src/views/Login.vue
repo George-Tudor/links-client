@@ -14,7 +14,7 @@
     <div>
       <button @click="login">Submit</button>
       <div>
-        <router-link :to="{ name: 'Register' }">Register</router-link>
+        <router-link :to="{ name: 'register' }">Register</router-link>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
 import fetchClient from '../services/fetchClient'
 
 export default {
-  name: 'Login',
+  name: 'login',
   data: () => ({
     credentials: {
       username: '',
@@ -35,7 +35,7 @@ export default {
     async login () {
       const response = await fetchClient.postUnauthenticated('/authenticate', this.credentials)
       window.localStorage.token = response.token
-      this.$router.push({ name: 'Links' })
+      this.$router.push({ name: 'links' })
     }
   }
 }
