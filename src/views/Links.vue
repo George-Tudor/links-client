@@ -55,9 +55,6 @@ export default {
     async deleteLink (link) {
       await fetchClient.delete(`/links/${link.id}`)
       this.getLinks()
-    },
-    async getLinkInfo () {
-      await fetchClient.get('/link-data', this.newLink.url)
     }
   }
 }

@@ -10,7 +10,9 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    return await rawResponse.json()
+    if (rawResponse.headers.get('Content-Length') !== '0') {
+      return await rawResponse.json()
+    }
   },
   async post (url, payload) {
     const rawResponse = await fetch(host + url, {
@@ -22,7 +24,10 @@ export default {
       },
       body: JSON.stringify(payload)
     })
-    return await rawResponse.json()
+    console.log('Hello')
+    if (rawResponse.headers.get('Content-Length') !== '0') {
+      return await rawResponse.json()
+    }
   },
   async get (url, query) {
     const rawResponse = await fetch(host + url, {
@@ -34,7 +39,9 @@ export default {
       },
       query
     })
-    return await rawResponse.json()
+    if (rawResponse.headers.get('Content-Length') !== '0') {
+      return await rawResponse.json()
+    }
   },
   async delete (url) {
     const rawResponse = await fetch(host + url, {
@@ -45,6 +52,8 @@ export default {
         'Content-Type': 'application/json'
       }
     })
-    return await rawResponse.json()
+    if (rawResponse.headers.get('Content-Length') !== '0') {
+      return await rawResponse.json()
+    }
   }
 }

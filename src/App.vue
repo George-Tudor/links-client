@@ -16,7 +16,11 @@ export default {
   created () {
     if (window.localStorage.token) {
       fetchClient.get('/me')
-        .then(() => this.$router.push({ name: 'links' }))
+        .then(() => {
+          if (this.$route.name === 'landing') {
+            this.$router.push({ name: 'links' })
+          }
+        })
         .catch(() => this.$router.push({ name: 'login' }))
     } else {
       this.$router.push({ name: 'login' })

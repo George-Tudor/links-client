@@ -4,14 +4,7 @@
 
 <script>
 export default {
-  name: 'landing',
-  created () {
-    if (window.localStorage.token) {
-      this.$router.push({ name: 'links' })
-    } else {
-      this.$router.push({ name: 'login' })
-    }
-  }
+  name: 'landing'
 }
 </script>
 
